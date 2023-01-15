@@ -24,52 +24,69 @@
                 <p>By creating an account with our store, you will be able to move through the checkout process faster,
                   store multiple shipping addresses, view and track your orders in your account and more.</p>
                 <div class="buttons-set">
-                  <button class="button create-account"><span>Login</span></button>
+                  <a href="{% url 'login' %}"><button class="button create-account"><span>Login</span></button></a>
                 </div>
               </div>
             </div>
             <div class="col-2 registered-users"><strong>New Customers</strong>
               <div class="content">
                 <p>If you have an account with us, please log in.</p>
-                <ul class="form-list">
-                  <li>
-                    <label for="name">First Name<span class="required">*</span></label>
-                    <br>
-                    <input type="text" title="" id="name" class="input-text" name="">
-                  </li>
-                  <li>
-                    <label for="surname">Last Name<span class="required">*</span></label>
-                    <br>
-                    <input type="text" title="" id="surname" class="input-text" name="">
-                  </li>
-                  <li>
-                    <label for="email">Email Address <span class="required">*</span></label>
-                    <br>
-                    <input type="text" title="" class="input-text" id="email" value="" name="">
-                  </li>
-                  <li>
-                    <label for="pass">Password <span class="required">*</span></label>
-                    <br>
-                    <input type="password" title="" id="pass" class="input-text" name="">
-                  </li>
-                  <li>
-                    <label for="pass2">Confirm password <span class="required">*</span></label>
-                    <br>
-                    <input type="password" title="" id="pass2" class="input-text" name="">
-                  </li>
-                </ul>
-                <p class="required">* Required Fields</p>
-                <div class="buttons-set">
-                  <button id="send2" name="" type="submit" class="button login"><span>Register</span></button>
-                </div>
+
+                <form action="{% url 'register' %}" method="POST" class="theme-form">
+
+                  {% csrf_token %}
+
+                  {% if form.errors %}
+                      <div class="alert alert-danger alert-dismissible" role="alert">
+                          <div id="form_errors">
+                              {% for key, value in form.errors.items %}
+                                  <strong>{{ value }}</strong>
+                              {% endfor %}
+                          </div>
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                  {% endif %}
+
+                  <div class="form-group">
+                    <label for='id_first_name'>{{ form.first_name.label }}</label>
+                    {{ form.first_name }}
+                  </div>
+
+                  <div class="form-group">
+                    <label for='id_last_name'>{{ form.last_name.label }}</label>
+                    {{ form.last_name }}
+                  </div>
+
+                  <div class="form-group">
+                    <label for='id_username'>{{ form.username.label }}</label>
+                    {{ form.username }}
+                  </div>
+
+                  <div class="form-group">
+                    <label for='id_email'>{{ form.email.label }}</label>
+                    {{ form.email }}
+                  </div>
+
+                  <div class="form-group">
+                    <label for='id_password1'>{{ form.password1.label }}</label>
+                    {{ form.password1 }}
+                  </div>
+
+                  <div class="form-group">
+                    <label for='id_password2'>{{ form.password2.label }}</label>
+                    {{ form.password2 }}
+                  </div>
+
+                  <div class="buttons-set">
+                    <button id="send2" name="" type="submit" class="button login"><span>Register</span></button>
+                  </div>
+
+                </form>
               </div>
           </fieldset>
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
       </div>
     </section>
     <!-- Main Container End -->

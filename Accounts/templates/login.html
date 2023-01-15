@@ -24,39 +24,65 @@
                 <p>By creating an account with our store, you will be able to move through the checkout process faster,
                   store multiple shipping addresses, view and track your orders in your account and more.</p>
                 <div class="buttons-set">
-                  <button class="button create-account"><span>Create an Account</span></button>
+                  <a href="{% url 'register' %}"><button class="button create-account"><span>Create an Account</span></button></a>
                 </div>
               </div>
             </div>
             <div class="col-2 registered-users"><strong>Registered Customers</strong>
               <div class="content">
                 <p>If you have an account with us, please log in.</p>
-                <ul class="form-list">
-                  <li>
-                    <label for="email">Email Address <span class="required">*</span></label>
-                    <br>
-                    <input type="text" title="" class="input-text" id="email" value="" name="">
-                  </li>
-                  <li>
-                    <label for="pass">Password <span class="required">*</span></label>
-                    <br>
-                    <input type="password" title="" id="pass" class="input-text" name="">
-                  </li>
-                </ul>
-                <p class="required">* Required Fields</p>
-                <div class="buttons-set">
-                  <button id="send2" name="" type="submit" class="button login"><span>Login</span></button>
-                  <a class="forgot-word" href="#">Forgot Your Password?</a>
-                </div>
+                {% include 'messages.html' %}
+
+                <form action="{% url 'login' %}" method="POST" id="login-form" class="theme-form">
+                  {% csrf_token %}
+
+                  {% if form.errors %}
+                      <div class="alert alert-danger alert-dismissible" role="alert">
+                          <div id="form_errors">
+                              {% for key, value in form.errors.items %}
+                                  <strong>{{ value }}</strong>
+                              {% endfor %}
+                          </div>
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                  {% endif %}
+
+                  <div class="form-group">
+                      <label for="id_username">{{ form.username.label }}</label>
+                      {{ form.username }}
+                  </div>
+                  <div class="form-group">
+                      <label for="id_password">{{ form.password.label }}</label>
+                      {{ form.password }}
+                  </div>
+
+                  <div class='d-flex justify-content-between'>
+                    <button class="btn btn-solid" type="submit">Login</button>
+                    <a href="{% url 'reset_password' %}"><p>Forgot Password ?</p></a>
+                  </div>
+
+                  <div style='display: flex; align-items: center; margin-top: 15px;'>
+                    <button class="btn mb-2" style='border: 1px #e5e5e5 solid; background-color: white; display: flex; align-items: center; margin-right: 15px;'>
+                      <img src="{% static 'images/superbphoto/google.png' %}" style='margin-right: 5px;'>
+                      <a href="#" style="color: black;">
+                        Login with Google
+                      </a>
+                    </button>
+                    <button class="btn mb-2" style='border: 1px #e5e5e5 solid; background-color: white; display: flex; align-items: center;'>
+                      <img src="{% static 'images/superbphoto/facebook.png' %}" style='margin-right: 5px;'>
+                      <a href="#" style="color: black;">
+                        Login with Facebook 
+                      </a>
+                    </button>
+                  </div>
+
+                </form>
               </div>
             </div>
           </fieldset>
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
       </div>
     </section>
     <!-- Main Container End -->

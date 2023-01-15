@@ -68,7 +68,9 @@
                 </div>
                 <!-- End Header Currency -->
 
-                <div class="welcome-msg hidden-xs"> Default welcome msg! </div>
+                {% if request.user.is_authenticated %}
+                  <div class="welcome-msg hidden-xs" data="{{user.id}}"> Welcome {{user.first_name}}!</div>
+                {% endif %}
               </div>
               <div class="col-xs-5 col-sm-6">
 
@@ -222,7 +224,7 @@
 
               <li class="level1"> <a href="{% url 'faq' %}"> <span>FAQ</span> </a> </li>
               <li class="level1"> <a href="{% url 'login' %}"> <span>Login</span> </a> </li>
-              <li class="level1"> <a href="{% url 'forgot_password' %}"> <span>Forgot Password</span> </a> </li>
+              {% comment %} <li class="level1"> <a href="{% url 'reset_password' %}"> <span>Forgot Password</span> </a> </li> {% endcomment %}
               <li class="level1"> <a href="{% url 'quick_view' %}"> <span>Quick view </span> </a> </li>
               <li class="level1 first parent"><a href="{% url 'blog' %}"><span>Blog</span></a>
                 <ul class="level2 right-sub" style="top: 0px; left: 165px; display: none;">
