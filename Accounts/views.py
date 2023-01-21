@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import User
-from .forms import ChangePasswordForm, CustomSetPasswordForm, LoginForm, RegistrationForm, ResetPasswordForm
+from .forms import AccountInforrmationForm, ChangePasswordForm, CustomSetPasswordForm, LoginForm, RegistrationForm, ResetPasswordForm
 from django.views.generic import CreateView
 from django.contrib.auth.views import LoginView, PasswordResetView, PasswordResetConfirmView, PasswordChangeView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -90,11 +90,25 @@ class ChangePasswordView(PasswordChangeView):
 
 # *******************************************************************************
 
-def account_information(request):
-    return render(request, "account_information.html")
+class AccountInformationView(LoginRequiredMixin, CreateView):
+    template_name = 'account_information.html'
 
-def address_book(request):
-    return render(request, "address_book.html")
+    def get(self, request, *args, **kwargs):
+        form = AccountInforrmationForm(instance=request.user)
+        return render(request, 'account_information.html', {'form': form})
 
-def contact_information(request):
-    return render(request, "contact_information.html")
+    def post(self, request, *args, **kwargs):
+        form = AccountInforrmationForm(request.POST)
+
+        if form.is_valid():
+            user_account = User.objects.get(pk=request.user.pk)
+            user_account.first_name = form.cleaned_data.get('first_name')
+            user_account.last_name = form.cleaned_data.get('last_name')
+            user_account.username = form.cleaned_data.get('username')
+            user_account.email = form.cleaned_data.get('email')
+            user_account.save()
+            messages.success(request, 'Your profile is updated')
+            return redirect('account_information')
+        else:
+            messages.error(request, 'Your profile is not updated')
+            return redirect('account_information')

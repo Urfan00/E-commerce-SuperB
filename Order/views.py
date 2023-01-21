@@ -1,7 +1,6 @@
 from django.shortcuts import render
 
 
-
 def checkout_billing_info(request):
     return render(request, "checkout_billing_info.html")
 
@@ -13,3 +12,6 @@ def shopping_cart(request):
 
 def wishlist(request):
     return render(request, "wishlist.html")
+
+def shipping_information(request):
+    return render(request, "shipping_information.html")

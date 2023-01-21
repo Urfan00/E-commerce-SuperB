@@ -121,3 +121,35 @@ class ChangePasswordForm(PasswordChangeForm):
                 'class': 'form-control',
                 'placeholder': 'Confirm Your New Password'
             }))
+
+
+class AccountInforrmationForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'username', 'email']
+        widgets = {
+            'first_name' : forms.TextInput(
+                attrs={
+                    'class' : 'form-control',
+                    'placeholder' : _("Enter your first name"),
+                }
+            ),
+            'last_name' : forms.TextInput(
+                attrs={
+                    'class' : 'form-control',
+                    'placeholder' : _("Enter your last name")
+                }
+            ),
+            'username' : forms.TextInput(
+                attrs={
+                    'class' : 'form-control',
+                    'placeholder' : _("Username")
+                }
+            ),
+            'email' : forms.EmailInput(
+                attrs={
+                    'class' : 'form-control',
+                    'placeholder' :"E-mail address"
+                }
+            ),
+        }

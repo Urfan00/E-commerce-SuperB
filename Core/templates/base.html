@@ -160,11 +160,11 @@
                 <!-- Header Top Links -->
                 <div class="toplinks">
                   <div class="links">
-                    <div class="myaccount"><a title="My Account" href="{% url 'index' %}"><span class="hidden-xs">My Account</span></a></div>
+                    <div class="myaccount"><a title="My Account" href="{% url 'account_information' %}"><span class="hidden-xs">My Account</span></a></div>
                     <div class="check"><a title="Checkout" href="{% url 'checkout' %}"><span class="hidden-xs">Checkout</span></a></div>
                     <div class="demo"><a title="Blog" href="{% url 'blog' %}"><span class="hidden-xs">Blog</span></a></div>
                     {% if request.user.is_authenticated %}
-                    <div class="login"><a href="{% url 'login' %}"><span class="hidden-xs">Change Password</span></a></div>
+                    <div class="login"><a href="{% url 'change_password' %}"><span class="hidden-xs">Change Password</span></a></div>
                       <div class="login"><a href="{% url 'logout' %}"><span class="hidden-xs">Log Out</span></a></div>
                     {% else %}
                       <div class="login"><a href="{% url 'login' %}"><span class="hidden-xs">Log In</span></a></div>
@@ -218,9 +218,8 @@
                 <ul class="level2 right-sub" style="top: 0px; left: 165px; display: none;">
                   <li class="level2 nav-2-1-1 first"><a href="{% url 'account_information' %}"><span>Account
                         Information</span></a></li>
-                  <li class="level2 nav-2-1-5 last"><a href="{% url 'address_book' %}"><span>Address Book</span></a></li>
-                  <li class="level2 nav-2-1-1 first"><a href="{% url 'contact_information' %}"><span>Contact
-                        Information</span></a></li>
+                  <li class="level2 nav-2-1-5 last"><a href="#"><span>Address Book</span></a></li>
+                  <li class="level2 nav-2-1-1 first"><a href="{% url 'shipping_information' %}"><span>shipping_information</span></a></li>
                 </ul>
                 <!--sub sub category-->
               </li>
