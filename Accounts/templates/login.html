@@ -66,13 +66,13 @@
                   <div style='display: flex; align-items: center; margin-top: 15px;'>
                     <button class="btn mb-2" style='border: 1px #e5e5e5 solid; background-color: white; display: flex; align-items: center; margin-right: 15px;'>
                       <img src="{% static 'images/superbphoto/google.png' %}" style='margin-right: 5px;'>
-                      <a href="#" style="color: black;">
+                      <a href="{% url 'social:begin' 'google-oauth2' %}" style="color: black;">
                         Login with Google
                       </a>
                     </button>
                     <button class="btn mb-2" style='border: 1px #e5e5e5 solid; background-color: white; display: flex; align-items: center;'>
                       <img src="{% static 'images/superbphoto/facebook.png' %}" style='margin-right: 5px;'>
-                      <a href="#" style="color: black;">
+                      <a href="{% url 'social:begin' 'facebook' %}" style="color: black;">
                         Login with Facebook 
                       </a>
                     </button>
