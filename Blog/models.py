@@ -4,9 +4,14 @@ from django.template.defaultfilters import slugify
 
 class BlogCategory(models.Model):
     name = models.CharField(max_length=20)
+    category_slug = models.SlugField(unique=True, null=True, blank=True)
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        self.category_slug = slugify(self.name)
+        return super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = "Blog Category"
@@ -15,9 +20,15 @@ class BlogCategory(models.Model):
 
 class BlogAuthor(models.Model):
     name = models.CharField(max_length=20)
+    author_slug = models.SlugField(unique=True, null=True, blank=True)
+    author_image = models.ImageField(upload_to="author_images")
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        self.author_slug = slugify(self.name)
+        return super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = "Blog Author"
@@ -29,7 +40,8 @@ class Blog(models.Model):
     slug = models.SlugField(unique=True, null=True, blank=True)
     author_id = models.ForeignKey(BlogAuthor, on_delete=models.CASCADE)
     category_id = models.ManyToManyField(BlogCategory, related_name='blogs')
-    description = models.TextField()
+    short_description = models.TextField()
+    long_description = models.TextField()
     cover_image = models.ImageField(upload_to = "blog_images")
     view_count = models.PositiveIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)

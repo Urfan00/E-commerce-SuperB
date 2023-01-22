@@ -23,73 +23,21 @@
                 <div role="main" id="content">
                   <div class="blog_post">
                     <div class="thumbnail">
-                      <h2> <a href="#">Lorem ipsum dolor sit amet, consect adipiscing elit</a> </h2>
+                      <h2>{{ blog.title }}</h2>
                       <div class="featured-img">
-                        <span class="gradient-overlay"></span>
-                        <img src="{% static 'images/blog-img1.jpg' %}" alt="blog post">
-
+                        <img src="{{ blog.cover_image.url }}" alt="blog post">
                       </div>
 
                     </div>
                     <div class="entry-meta">
-                      <a href="#">
-                        <span class="author-avatar byline"><img alt="" src="{% static 'images/admin-photo.jpg' %}"
-                            class="avatar avatar-96 photo">By John Doe</span> <span class="timestamp">January 26,
-                          2016</span>
+                      <a href="{% url 'blog' %}?author={{ blog.author_id.author_slug }}">
+                        <span class="author-avatar byline"><img src="{{ blog.author_id.author_image.url }}"
+                            class="avatar avatar-96 photo">By {{ blog.author_id.name }}</span>
+                            <span class="timestamp">{{ blog.created_at | date:" M-d, Y" }}</span>
                       </a>
                     </div>
                     <div class="entry-content">
-                      <p>Fusce ac pharetra urna. Duis non lacus sit amet lacus interdum facilisis sed non est. Ut mi
-                        metus, semper eu dictum nec, condimentum sed sapien. Nullam lobortis nunc semper ipsum luctus ut
-                        viverra ante eleifend. Nunc pretium velit sed augue luctus accumsan.</p>
-                      <p>Aliquam laoreet consequat malesuada. Integer vitae diam sed dolor euismod laoreet eget ac
-                        felis. Donec non erat sed elit bibendum sodales. Donec eu cursus velit. Proin nunc lacus,
-                        gravida mollis dictum ut, vulputate eu turpis. Sed felis sapien, commodo in iaculis in, feugiat
-                        sed enim. Sed nunc ipsum, fermentum varius dignissim vitae, blandit et ante.Maecenas sagittis,
-                        lorem sed congue egestas, lectus purus congue nisl, ac molestie enim ligula nec eros. Sed leo
-                        tortor, tincidunt sit amet elementum vel, eleifend at orci. Maecenas ut turpis felis. Donec sit
-                        amet quam sem, et aliquet est.</p>
-                      <p>Quisque nisl lectus, accumsan et euismod eu, sollicitudin ac augue. In sit amet urna magna.
-                        Curabitur imperdiet urna nec purus egestas eget aliquet purus iaculis. Nunc porttitor blandit
-                        imperdiet. Nulla facilisi. Cras odio ipsum, vehicula nec vehicula sed, convallis scelerisque
-                        quam. Phasellus ut odio dui, ut fermentum neque.</p>
-                      <blockquote>Lorem ipsum dolor sit amet, consecte adipiscing elit. Integer aliquam mi nec dolor
-                        placerat a condimentum diam mollis. Ut pulvinar neque eget massa dapibus dolor.</blockquote>
-                      <p>Curabitur at vestibulum sem. Aliquam vehicula neque ac nibh suscipit ultrices. Morbi interdum
-                        accumsan arcu nec scelerisque. Phasellus eget purus nulla. Suspendisse quam est, tempor quis
-                        consectetur non, interdum vitae diam. Pellentesque volutpat mollis ligula in laoreet. Aenean est
-                        dui, sagittis in consequat at, adipiscing at risus. Sed suscipit, est vitae aliquam molestie,
-                        sem dolor dignissim leo, eget imperdiet enim urna in justo. Mauris pulvinar tortor lorem.
-                        Aliquam sed nisl in ipsum tincidunt ultrices.</p>
-                      <h2>Heading</h2>
-                      <p>Pellentesque volutpat mollis ligula in laoreet. Aenean est dui, sagittis in consequat at,
-                        adipiscing at risus. Sed suscipit, est vitae aliquam molestie, sem dolor dignissim leo, eget
-                        imperdiet enim urna in justo. Mauris pulvinar tortor lorem. Aliquam sed nisl in ipsum tincidunt
-                        ultrices.</p>
-                      <ul>
-                        <li> Aenean est dui, sagittis in consequat</li>
-                        <li> Volutpat mollis ligula in laoreet</li>
-                        <li> Nunc ac sem eu libero pretium faucib. Quisque et semper</li>
-                        <li> Integer vitae diam sed dolor euismod laoreet eget ac felis</li>
-                        <li> Quisque et semper odio. Praesent tortor ligula</li>
-                      </ul>
-                      <h3>Heading</h3>
-                      <p>Pellentesque volutpat mollis ligula in laoreet. Aenean est dui, sagittis in consequat at,
-                        adipiscing at risus. Sed suscipit, est vitae aliquam molestie, sem dolor dignissim leo, eget
-                        imperdiet enim urna in justo. Mauris pulvinar tortor lorem. Aliquam sed nisl in ipsum tincidunt
-                        ultrices.</p>
-                      <h4>Heading</h4>
-                      <p>Nullam commodo lobortis nibh, vitae accumsan velit dapibus sed. Nunc ac sem eu libero pretium
-                        faucib. Quisque et semper odio. Praesent tortor ligula, imperdiet sed aliquet ut, pharetra at
-                        nisi. Etiam sit amet molestie est. Donec id turpis vitae leo viverra adipiscing at sed nisi.
-                        Donec ut justo nunc. Vivamu bibendum erat ac nunc sollicitudin lacinia. Phasellus sed lacus
-                        magna.</p>
-                      <h5>Heading</h5>
-                      <p>Nullam commodo lobortis nibh, vitae accumsan velit dapibus sed. Nunc ac sem eu libero pretium
-                        faucib. Quisque et semper odio. Praesent tortor ligula, imperdiet sed aliquet ut, pharetra at
-                        nisi. Etiam sit amet molestie est. Donec id turpis vitae leo viverra adipiscing at sed nisi.
-                        Donec ut justo nunc. Vivamu bibendum erat ac nunc sollicitudin lacinia. Phasellus sed lacus
-                        magna.</p>
+                      <p>{{ blog.long_description }}</p>
                     </div>
 
                   </div>
@@ -97,89 +45,29 @@
                     <div class="comments-wrapper">
                       <h3> Comments </h3>
                       <ul class="commentlist">
-                        <li class="comment">
-                          <div class="comment-wrapper">
-                            <div class="comment-author vcard">
-                              <p class="gravatar"><a href="#"><img width="60" height="60" alt="avatar"
-                                    src="{% static 'images/avatar60x60.jpg' %}"></a></p>
-                              <span class="author">John Doe</span>
-                            </div>
-                            <!--comment-author vcard-->
-                            <div class="comment-meta">
-                              <time datetime="2014-07-10T07:26:28+00:00" class="entry-date">Thu, Jul 10, 2014 07:26:28
-                                am</time>
-                              .
-                            </div>
-                            <!--comment-meta-->
-                            <div class="comment-body"> Curabitur at vestibulum sem. Aliquam vehicula neque ac nibh
-                              suscipit ultrices. Morbi interdum accumsan arcu nec scelerisque ellentesque id erat sem,
-                              ut commodo nulla. Sed a nulla et eros fringilla. Phasellus eget purus nulla. </div>
-                          </div>
-                        </li>
-                        <!--comment-->
 
-                        <li class="comment">
-                          <div class="comment-wrapper">
-                            <div class="comment-author vcard">
-                              <p class="gravatar"><a href="#"><img width="60" height="60" alt="avatar"
-                                    src="{% static 'images/avatar60x60.jpg' %}"></a></p>
-                              <span class="author">John Doe</span>
-                            </div>
-                            <!--comment-author vcard-->
-                            <div class="comment-meta">
-                              <time datetime="2014-07-10T07:27:08+00:00" class="entry-date">Thu, Jul 10, 2014 07:27:08
-                                am</time>
-                              .
-                            </div>
-                            <!--comment-meta-->
-                            <div class="comment-body"> Curabitur at vestibulum sem. Aliquam vehicula neque ac nibh
-                              suscipit ultrices. Morbi interdum accumsan arcu nec scelerisque ellentesque id erat sem,
-                              ut commodo nulla. Sed a nulla et eros fringilla. Phasellus eget purus nulla. </div>
-                          </div>
-                        </li>
-                        <!--comment-->
-
-                        <li class="comment">
-                          <div class="comment-wrapper">
-                            <div class="comment-author vcard">
-                              <p class="gravatar"><a href="#"><img width="60" height="60" alt="avatar"
-                                    src="{% static 'images/avatar60x60.jpg' %}"></a></p>
-                              <span class="author">John Doe</span>
-                            </div>
-                            <!--comment-author vcard-->
-                            <div class="comment-meta">
-                              <time datetime="2014-07-10T07:27:56+00:00" class="entry-date">Thu, Jul 10, 2014 07:27:56
-                                am</time>
-                              .
-                            </div>
-                            <!--comment-meta-->
-                            <div class="comment-body"> Curabitur at vestibulum sem. Aliquam vehicula neque ac nibh
-                              suscipit ultrices. Morbi interdum accumsan arcu nec scelerisque ellentesque id erat sem,
-                              ut commodo nulla. Sed a nulla et eros fringilla. Phasellus eget purus nulla. </div>
-                          </div>
-                        </li>
-                        <!--comment-->
-
-                        <li class="comment">
-                          <div class="comment-wrapper">
-                            <div class="comment-author vcard">
-                              <p class="gravatar"><a href="#"><img width="60" height="60" alt="avatar"
-                                    src="{% static 'images/avatar60x60.jpg' %}"></a></p>
-                              <span class="author">Lisa White</span>
-                            </div>
-                            <!--comment-author vcard-->
-                            <div class="comment-meta">
-                              <time datetime="2014-07-10T07:28:32+00:00" class="entry-date">Thu, Jul 10, 2014 07:28:32
-                                am</time>
-                              .
-                            </div>
-                            <!--comment-meta-->
-                            <div class="comment-body"> Curabitur at vestibulum sem. Aliquam vehicula neque ac nibh
-                              suscipit ultrices. Morbi interdum accumsan arcu nec scelerisque ellentesque id erat sem,
-                              ut commodo nulla. Sed a nulla et eros fringilla. </div>
-                          </div>
-                        </li>
-                        <!--comment-->
+                        {% if reviews %}
+                          {% for review in reviews %}
+                            <li class="comment">
+                              <div class="comment-wrapper">
+                                <div class="comment-author vcard">
+                                  <p class="gravatar"><img width="60" height="60" alt="avatar"
+                                        src="{% static 'images/superbphoto/user_icon.png' %}"></p>
+                                  <span class="author">{{ review.name }}</span>
+                                </div>
+                                <!--comment-author vcard-->
+                                <div class="comment-meta">
+                                  <time class="entry-date">{{ review.created_at }}</time>
+                                  .
+                                </div>
+                                <!--comment-meta-->
+                                <div class="comment-body">{{ review.comment }}</div>
+                              </div>
+                            </li>
+                          {% endfor %}
+                        {% else %}
+                          <li>No Comment Yet</li>
+                        {% endif %}
                       </ul>
                       <!--commentlist-->
                     </div>
@@ -187,25 +75,42 @@
 
                     <div class="comments-form-wrapper clearfix">
                       <h3>Leave A reply</h3>
-                      <form class="comment-form" method="post" id="postComment">
-                        <div class="field">
-                          <label>Name<em class="required">*</em></label>
-                          <input type="text" class="input-text" title="Name" id="user" name="user_name">
+
+                      <form action="{% url 'blog_detail' slug=blog.slug %}" method="POST" class="comment-form" id="postComment">
+                        {% csrf_token %}
+
+                        {% if form.errors %}
+                          <div class="alert alert-danger alert-dismissible" role="alert">
+                              <div id="form_errors">
+                                  {% for key, value in form.errors.items %}
+                                      <strong>{{ value }}</strong>
+                                  {% endfor %}
+                              </div>
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+                          </div>
+                        {% endif %}
+
+                        <div class="form-row">
+                          <div class="col-md-6">
+                            <label for="id_name">{{ form.name.label }}</label>
+                            {{ form.name }}
+                          </div>
+                          <div class="col-md-6">
+                            <label for="id_email">{{ form.email.label }}</label>
+                            {{ form.email }}
+                          </div>
+                          <div class="col-md-12">
+                            <label for="id_comment">{{ form.comment.label }}</label>
+                            {{ form.comment }}
+                          </div>
+                          <div style="width:96%" class="button-set">
+                            <input type="hidden" value="1" name="blog_id">
+                            <button type="submit" class="bnt-comment"><span><span>Add Comment</span></span></button>
+                          </div>
                         </div>
-                        <div class="field">
-                          <label>Email<em class="required">*</em></label>
-                          <input type="text" class="input-text" title="Email" id="email" name="user_email">
-                        </div>
-                        <div class="clear"></div>
-                        <div class="field aw-blog-comment-area">
-                          <label for="comment">Comment<em class="required">*</em></label>
-                          <textarea rows="5" cols="50" class="input-text" title="Comment" id="comment"
-                            name="comment"></textarea>
-                        </div>
-                        <div style="width:96%" class="button-set">
-                          <input type="hidden" value="1" name="blog_id">
-                          <button type="submit" class="bnt-comment"><span><span>Add Comment</span></span></button>
-                        </div>
+
                       </form>
                     </div>
                     <!--comments-form-wrapper clearfix-->
@@ -221,46 +126,21 @@
                 <h3 class="widget-title">Most Popular Post</h3>
                 <div class="widget-content">
                   <ul class="posts-list unstyled clearfix">
-                    <li>
-                      <figure class="featured-thumb"> <a href="#"> <img width="80" height="53" alt="blog image"
-                            src="{% static 'images/blog-img1.jpg' %}"> </a> </figure>
-                      <!--featured-thumb-->
-                      <h4><a title="Pellentesque posuere" href="#">Pellentesque posuere</a></h4>
-                      <p class="post-meta"><i class="icon-calendar"></i>
-                        <time datetime="2014-07-10T07:09:31+00:00" class="entry-date">Jul 10, 2014</time>
-                        .
-                      </p>
-                    </li>
-                    <li>
-                      <figure class="featured-thumb"> <a href="#"> <img width="80" height="53" alt="blog image"
-                            src="{% static 'images/blog-img2.jpg' %}"> </a> </figure>
-                      <!--featured-thumb-->
-                      <h4><a title="Dolor lorem ipsum" href="#">Dolor lorem ipsum</a></h4>
-                      <p class="post-meta"><i class="icon-calendar"></i>
-                        <time datetime="2014-07-10T07:01:18+00:00" class="entry-date">Jul 10, 2014</time>
-                        .
-                      </p>
-                    </li>
-                    <li>
-                      <figure class="featured-thumb"> <a href="#"> <img width="80" height="53" alt="blog image"
-                            src="{% static 'images/blog-img3.jpg' %}"> </a> </figure>
-                      <!--featured-thumb-->
-                      <h4><a title="Aliquam eget sapien placerat" href="#">Aliquam eget sapien placerat</a></h4>
-                      <p class="post-meta"><i class="icon-calendar"></i>
-                        <time datetime="2014-07-10T06:59:14+00:00" class="entry-date">Jul 10, 2014</time>
-                        .
-                      </p>
-                    </li>
-                    <li>
-                      <figure class="featured-thumb"> <a href="#"> <img width="80" height="53" alt="blog image"
-                            src="{% static 'images/blog-img4.jpg' %}"> </a> </figure>
-                      <!--featured-thumb-->
-                      <h4><a title="Pellentesque habitant morbi" href="#">Pellentesque habitant morbi</a></h4>
-                      <p class="post-meta"><i class="icon-calendar"></i>
-                        <time datetime="2014-07-10T06:53:43+00:00" class="entry-date">Jul 10, 2014</time>
-                        .
-                      </p>
-                    </li>
+
+                    {% for m_p_post in most_popular_post %}
+                      <li>
+                        <figure class="featured-thumb"> <a href="{% url 'blog_detail' m_p_post.slug %}">
+                          <img width="80" height="53" alt="blog image"
+                              src="{{ m_p_post.cover_image.url }}"></a></figure>
+                        <!--featured-thumb-->
+                        <h4><a title="Pellentesque posuere" href="{% url 'blog_detail' m_p_post.slug %}">{{ m_p_post.title }}</a></h4>
+                        <p class="post-meta"><i class="icon-calendar"></i>
+                          <time class="entry-date">{{ m_p_post.created_at | date:" M-d, Y" }}</time>
+                          .
+                        </p>
+                      </li>
+                    {% endfor %}
+
                   </ul>
                 </div>
                 <!--widget-content-->
@@ -269,19 +149,21 @@
               <div class="popular-posts widget widget_categories" id="categories-2">
                 <h3 class="widget-title">Categories</h3>
                 <ul>
-                  <li class="cat-item"><a href="#">Category 1</a></li>
-                  <li class="cat-item"><a href="#">Category 2</a></li>
-                  <li class="cat-item"><a href="#">Category 3</a></li>
-                  <li class="cat-item"><a href="#">Category 4</a></li>
-                  <li class="cat-item"><a href="#">Category 5</a></li>
-
+                  {% for category in categories %}
+                    <li class="cat-item cat-item-19599"><a href="{% url 'blog' %}?category={{ category.category_slug }}">{{ category.name }}</a></li>
+                  {% endfor %}
                 </ul>
               </div>
-              <!-- Banner Ad Block -->
-              <div class="ad-spots widget"> <a target="_self" href="#" title=""><img alt="offer banner"
-                    src="{% static 'images/bloc3.jpg' %}"></a></br>
-                <a target="_self" href="#" title=""><img alt="offer banner" src="{% static 'images/block2.jpg' %}"></a>
+
+              <div class="popular-posts widget widget_categories" id="categories-2">
+                <h3 class="widget-title">Authors</h3>
+                <ul>
+                  {% for author in authors %}
+                    <li class="cat-item cat-item-19599"><a href="{% url 'blog' %}?author={{ author.author_slug }}">{{ author.name }}</a></li>
+                  {% endfor %}
+                </ul>
               </div>
+
               <!-- Banner Text Block -->
               <div class="text-widget widget widget__sidebar">
                 <h3 class="widget-title">Text Widget</h3>
