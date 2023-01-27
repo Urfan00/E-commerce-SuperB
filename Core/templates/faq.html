@@ -21,7 +21,19 @@
               <h2>Frequently Asked Questions</h2>
             </div>
             <div class="panel-group accordion-faq" id="faq-accordion">
-              <div class="panel">
+
+              {% for faq in faqs %}
+                <div class="panel">
+                  <div class="panel-heading"> <a data-toggle="collapse" data-parent="#faq-accordion" href="#{{ faq.id }}"
+                    class="collapsed"> <span class="arrow-down">+</span> <span class="arrow-up">&#8211;</span>{{ faq.question }}</a>
+                  </div>
+                  <div id="{{ faq.id }}" class="panel-collapse collapse">
+                    <div class="panel-body">{{faq.answer}}</div>
+                  </div>
+                </div>
+              {% endfor %}
+
+              {% comment %} <div class="panel">
                 <div class="panel-heading"> <a data-toggle="collapse" data-parent="#faq-accordion" href="#question1">
                     <span class="arrow-down">+</span> <span class="arrow-up">&#8211;</span> Lorem ipsum dolor sit amet,
                     consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, laoreet sit amet,
@@ -124,7 +136,8 @@
                     neque purus, ullamcorper nec, eleifend at, fermentum ut, turpis. Mauris et ligula quis erat
                     dignissim imperdiet. Integer ligula magna, dictum et, pulvinar non, ultricies ac, nibh. </div>
                 </div>
-              </div>
+              </div> {% endcomment %}
+
             </div>
           </div>
         </div>

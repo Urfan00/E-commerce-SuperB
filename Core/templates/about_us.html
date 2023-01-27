@@ -61,10 +61,10 @@
               <div class="block-content">
                 <ol id="recently-viewed-items">
                   <li class="item odd"><strong>About Us</strong></li>
-                  <li class="item even"><a href="#">Sitemap</a></li>
-                  <li class="item  odd"><a href="#">Terms of Service</a></li>
-                  <li class="item even"><a href="#">Search Terms</a></li>
-                  <li class="item last"><a href="contact-us.html">Contact Us</a></li>
+                  <li class="item last"><a href="{% url 'contact_us' %}">Contact Us</a></li>
+                  <li class="item  odd"><a href="{% url 'faq' %}">FAQ</a></li>
+                  <li class="item even"><a href="{% url 'index' %}">Home</a></li>
+                  <li class="item even"><a href="#">Search</a></li>
                 </ol>
               </div>
             </div>
