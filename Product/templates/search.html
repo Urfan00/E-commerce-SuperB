@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  <title>Search</title>
+{% endblock %}
+
+{% block css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.bxslider.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="main container">
+    <div class="account-login">
+    <div class="page-title">
+        <h1>Search Products...</h1>
+    </div>
+    <fieldset class="col2-set">
+        <div class="content">
+            <form>
+                <input name="search" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Search Products......">
+                <div class="input-group-append">
+                    <button class="btn btn-solid"><i class="fa fa-search"></i>Search</button>
+                </div>
+            </form>
+        </div>
+    </fieldset>
+    </div>
+</div>
+
+<section class="related-pro wow bounceInUp animated">
+    <div class="container">
+        <div class="slider-items-products">
+            <div class="new_title center"><h2>Products</h2></div>
+            <div id="related-products-slider" class="product-flexslider hidden-buttons">
+                <div class="slider-items slider-width-col4 products-grid">
+                    {% if products %}
+                        {% for product in products %}
+                            <div class="item">
+                                <div class="item-inner">
+                                    <div class="item-img">
+                                        <div class="item-img-info">
+                                            <a href="{% url 'product_detail' product.product_id.slug %}" title="Retis lapen casen" class="product-image">
+                                                <img src="{{ product.product_id.cover_image.url }}" alt="Retis lapen casen">
+                                            </a>
+
+                                            <div class="actions">
+                                                <div class="quick-view-btn"><a href="#" data-toggle="tooltip" data-placement="right" title=""
+                                                    data-original-title="Quick View"> <span>Quick View</span></a></div>
+                                                <div class="link-wishlist"><a href="#" data-toggle="tooltip" data-placement="right" title=""
+                                                    data-original-title="Wishlist"><span>Add to Wishlist</span></a></div>
+                                                <div class="link-compare"><a href="#" data-toggle="tooltip" data-placement="right" title=""
+                                                    data-original-title="Compare"><span>Add to Compare</span></a></div>
+                                                <div class="add_cart">
+                                                <button class="button btn-cart" type="button" data-toggle="tooltip" data-placement="right"
+                                                    title="" data-original-title="Add to Cart"><span>Add to Cart</span></button>
+                                                </div>
+                                            </div>
+
+                                            <div class="rating">
+                                                <div class="ratings">
+                                                <div class="rating-box">
+                                                    <div class="rating" style="width:{{ product.rate_avg }}%"></div>
+                                                </div>
+                                                <p class="rating-links"><a href="#">{{ product.review_count }} Review(s)</a> <span class="separator">|</span> <a
+                                                    href="#">Add Review</a> </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item-info">
+                                        <div class="info-inner">
+                                            <div class="item-title"><a href="{% url 'product_detail' product.product_id.slug %}" title="Retis lapen casen">{{ product.product_id.title }}</a> </div>
+                                                <div class="item-content">
+                                                    <div class="item-price">
+
+                                                        {% if product.product_id.in_sale %}
+                                                            <div class="price-box">
+                                                            <span class="regular-price">
+                                                                <span class="price">${{ product.product_id.new_price }}
+                                                                <p class="old-price">
+                                                                    <span class="price-label"></span>
+                                                                    <span class="price">${{ product.product_id.price }}</span>
+                                                                </p>
+                                                                </span>
+                                                            </span>
+                                                        {% else %}
+                                                            <div class="price-box"><span class="regular-price"><span class="price">${{ product.product_id.price }}</span> </span>
+                                                        {% endif %}
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <img src="{% static 'images/superbphoto/empty-search.jpg' %}">
+                        <h3><strong>Sorry! Couldn't find the product you were looking For!!!</strong></h3>
+                        <h4>Please check if you have misspelt something or try searching with other words.</h4>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block js %}
+  <script type="text/javascript" src="{% static 'js/parallax.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/slider.js' %}"></script>
+{% endblock %}

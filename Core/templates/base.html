@@ -198,9 +198,36 @@
           </li>
           <li class="level0 parent drop-menu"><a href="#"><span>Pages</span> </a>
             <ul class="level1" style="display: none;">
-              <li class="level1 first"><a href="#"><span>Grid</span></a></li>
-              <li class="level1 nav-10-2"> <a href="#"> <span>List</span> </a> </li>
-              <li class="level1 nav-10-3"> <a href="{% url 'product_detail' %}"> <span>Product Detail</span> </a> </li>
+              <li class="level1"><a href="{% url 'index' %}"><span>Home</span></a></li>
+              <li class="level1 first parent"><a href="#"><span>Registration</span></a>
+                <!--sub sub category-->
+                <ul class="level2 right-sub" style="top: 0px; left: 165px; display: none;">
+                  <li class="level2 nav-2-1-1 first"><a href="{% url 'login' %}"><span>Log In</span></a></li>
+                  <li class="level2 nav-2-1-5 last"><a href="{% url 'register' %}"><span>Register</span></a></li>
+                  <li class="level2 nav-2-1-1 first"><a href="{% url 'reset_password' %}"><span>Reset Password</span></a></li>
+                  <li class="level2 nav-2-1-5 last"><a href="{% url 'change_password' %}"><span>Change Password</span></a></li>
+                </ul>
+                <!--sub sub category-->
+              </li>
+              <li class="level1 first"><a href="{% url 'account_information' %}"><span>Account Information</span></a></li>
+              <li class="level1"><a href="{% url 'faq' %}"><span>FAQ</span></a></li>
+              <li class="level1"><a href="{% url 'blog' %}"><span>Blog</span></a></li>
+              <li class="level1"><a href="{% url 'about_us' %}"><span>About us</span></a></li>
+              <li class="level1"><a href="{% url 'error' %}"><span>404 Error Page</span></a></li>
+              <li class="level1"><a href="{% url 'contact_us' %}"><span>Contact us</span></a></li>
+              <li class="level1 first parent"><a href="#"><span>Products</span></a>
+                <!--sub sub category-->
+                <ul class="level2 right-sub" style="top: 0px; left: 165px; display: none;">
+                  <li class="level2 nav-2-1-1 first"><a href="{% url 'product_list' %}"><span>All</span></a></li>
+                  <li class="level2 nav-2-1-5 last"><a href="{% url 'product_list' %}?category=Man"><span>Men</span></a></li>
+                  <li class="level2 nav-2-1-1 first"><a href="{% url 'product_list' %}?category=Woman"><span>Women</span></a></li>
+                  <li class="level2 nav-2-1-5 last"><a href="{% url 'product_list' %}?category=Kids"><span>Kids</span></a></li>
+                </ul>
+                <!--sub sub category-->
+              </li>
+
+              <li class="level1 first"><a href="#"><span>**********</span></a></li>
+
               <li class="level1 nav-10-4"> <a href="{% url 'shopping_cart' %}"> <span>Shopping Cart</span> </a> </li>
               <li class="level1 first parent"><a href="{% url 'checkout' %}"><span>Checkout</span></a>
                 <!--sub sub category-->
@@ -213,30 +240,6 @@
                 <!--sub sub category-->
               </li>
               <li class="level1 nav-10-4"> <a href="{% url 'wishlist' %}"> <span>Wishlist</span> </a> </li>
-              <li class="level1 first parent"><a href="#"><span>Dashboard</span></a>
-                <!--sub sub category-->
-                <ul class="level2 right-sub" style="top: 0px; left: 165px; display: none;">
-                  <li class="level2 nav-2-1-1 first"><a href="{% url 'account_information' %}"><span>Account
-                        Information</span></a></li>
-                  <li class="level2 nav-2-1-5 last"><a href="#"><span>Address Book</span></a></li>
-                  <li class="level2 nav-2-1-1 first"><a href="{% url 'shipping_information' %}"><span>shipping_information</span></a></li>
-                </ul>
-                <!--sub sub category-->
-              </li>
-              <li class="level1"> <a href="#"> <span>Multiple Addresses</span> </a> </li>
-              <li class="level1"> <a href="{% url 'about_us' %}"> <span>About us</span> </a> </li>
-
-              <li class="level1"> <a href="{% url 'faq' %}"> <span>FAQ</span> </a> </li>
-              <li class="level1"> <a href="{% url 'login' %}"> <span>Login</span> </a> </li>
-              {% comment %} <li class="level1"> <a href="{% url 'reset_password' %}"> <span>Forgot Password</span> </a> </li> {% endcomment %}
-              <li class="level1"> <a href="{% url 'quick_view' %}"> <span>Quick view </span> </a> </li>
-              <li class="level1 first parent"><a href="{% url 'blog' %}"><span>Blog</span></a>
-                <ul class="level2 right-sub" style="top: 0px; left: 165px; display: none;">
-                  <li class="level2 nav-2-1-1 first"><a href="#"><span>Blog Detail</span></a></li>
-                </ul>
-              </li>
-              <li class="level1"><a href="{% url 'contact_us' %}"><span>Contact us</span></a> </li>
-              <li class="level1"><a href="{% url 'error' %}"><span>404 Error Page</span></a> </li>
             </ul>
           </li>
           <li class="mega-menu"><a href="#" class="level-top"><span>Women</span></a>
