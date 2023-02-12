@@ -142,7 +142,7 @@
                                 src="{% static 'images/interstitial-close.png' %}" alt="close"> </button>
                           </div>
                           <div class="modal-body">
-                            <form class="navbar-form">
+                            <form class="navbar-form" action="{% url 'search' %}">
                               <div id="search">
                                 <div class="input-group">
                                   <input name="search" placeholder="Search" class="form-control" type="text">
@@ -215,6 +215,7 @@
               <li class="level1"><a href="{% url 'about_us' %}"><span>About us</span></a></li>
               <li class="level1"><a href="{% url 'error' %}"><span>404 Error Page</span></a></li>
               <li class="level1"><a href="{% url 'contact_us' %}"><span>Contact us</span></a></li>
+              <li class="level1"><a href="{% url 'search' %}"><span>Search</span></a></li>
               <li class="level1 first parent"><a href="#"><span>Products</span></a>
                 <!--sub sub category-->
                 <ul class="level2 right-sub" style="top: 0px; left: 165px; display: none;">
@@ -242,7 +243,7 @@
               <li class="level1 nav-10-4"> <a href="{% url 'wishlist' %}"> <span>Wishlist</span> </a> </li>
             </ul>
           </li>
-          <li class="mega-menu"><a href="#" class="level-top"><span>Women</span></a>
+          <li class="mega-menu"><a href="{% url 'product_list' %}?category=Woman" class="level-top"><span>Women</span></a>
             <div style="left: 0px; display: none;" class="level0-wrapper dropdown-6col">
               <div class="container">
                 <div class="level0-wrapper2">
@@ -320,7 +321,7 @@
               </div>
             </div>
           </li>
-          <li class="mega-menu"><a href="grid.html" class="level-top"><span>Men</span></a>
+          <li class="mega-menu"><a href="{% url 'product_list' %}?category=Man" class="level-top"><span>Men</span></a>
             <div style="left: 0px; display: none;" class="level0-wrapper dropdown-6col">
               <div class="container">
                 <div class="level0-wrapper2">
@@ -392,7 +393,7 @@
           </li>
         </ul>
         <ul class="nav hidden-xs menu-item menu-item-right">
-          <li class="mega-menu"><a href="grid.html" class="level-top"><span>Electronics</span></a>
+          <li class="mega-menu"><a href="{% url 'product_list' %}?category=Electronics" class="level-top"><span>Electronics</span></a>
             <div style="left: 0px; display: none;" class="level0-wrapper dropdown-6col">
               <div class="container">
                 <div class="level0-wrapper2">
@@ -475,10 +476,10 @@
               </div>
             </div>
           </li>
-          <li class="mega-menu"><a class="level-top" href="grid.html"><span>Furniture</span></a>
+          <li class="mega-menu"><a class="level-top" href="{% url 'product_list' %}?category=Furniture"><span>Furniture</span></a>
 
           </li>
-          <li class="level0 nav-8 level-top"><a href="grid.html" class="level-top"><span>Kids</span></a></li>
+          <li class="level0 nav-8 level-top"><a href="{% url 'product_list' %}?category=Kids" class="level-top"><span>Kids</span></a></li>
 
         </ul>
       </div>
@@ -497,7 +498,7 @@
               <div class="footer-column pull-left">
                 <h4>CUSTOMMER SERVICE</h4>
                 <ul class="links">
-                  <li class="first"><a href="#" title="Contact us">My Account</a></li>
+                  <li class="first"><a href="{% url 'account_information' %}" title="Contact us">My Account</a></li>
                   <li><a href="#" title="About us">Order History</a></li>
                   <li><a href="{% url 'faq' %}" title="faq">FAQ</a></li>
                   <li><a href="#" title="Popular Searches">Specials</a></li>
@@ -512,14 +513,14 @@
                   <li><a title="Information" href="#">Customer Service</a></li>
                   <li><a title="Addresses" href="#">Company</a></li>
                   <li><a title="Addresses" href="#">Investor Relations</a></li>
-                  <li class="last"><a title="Orders History" href="#">Advanced Search</a></li>
+                  <li class="last"><a title="Orders History" href="{% url 'search' %}">Advanced Search</a></li>
 
                 </ul>
               </div>
               <div class="footer-column pull-left">
                 <h4>Why choose Us</h4>
                 <ul class="links">
-                  <li class="first"><a href="#" title="About us">Shopping Guide</a></li>
+                  <li class="first"><a href="{% url 'product_list' %}" title="About us">Shopping Guide</a></li>
                   <li><a href="{% url 'blog' %}" title="Blog">Blog</a></li>
                   <li><a href="#" title="Company">Company</a></li>
                   <li><a href="#" title="Investor Relations">Investor Relations</a></li>

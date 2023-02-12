@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, ListView
 from Blog.models import Blog
+from Product.models import ProductVersion
 from .models import FAQ, ContactUs, Logo
 from .forms import ContactUsForm
 
@@ -17,6 +18,10 @@ class HomePageView(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['blogs'] = Blog.objects.all()[:2]
         context['logos'] = Logo.objects.all()
+        context['products'] = ProductVersion.objects.all()
+        context['best_seller'] = ProductVersion.objects.order_by('-review_count').all()[:6]
+        context['featured'] = ProductVersion.objects.order_by("-read_count").all()[:6]
+        context['new'] = ProductVersion.objects.order_by("created_at").all()[:6]
         return context
 
 

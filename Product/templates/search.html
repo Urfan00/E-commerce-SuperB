@@ -46,16 +46,28 @@
                                             </a>
 
                                             <div class="actions">
-                                                <div class="quick-view-btn"><a href="#" data-toggle="tooltip" data-placement="right" title=""
-                                                    data-original-title="Quick View"> <span>Quick View</span></a></div>
-                                                <div class="link-wishlist"><a href="#" data-toggle="tooltip" data-placement="right" title=""
-                                                    data-original-title="Wishlist"><span>Add to Wishlist</span></a></div>
-                                                <div class="link-compare"><a href="#" data-toggle="tooltip" data-placement="right" title=""
-                                                    data-original-title="Compare"><span>Add to Compare</span></a></div>
-                                                <div class="add_cart">
-                                                <button class="button btn-cart" type="button" data-toggle="tooltip" data-placement="right"
-                                                    title="" data-original-title="Add to Cart"><span>Add to Cart</span></button>
+                                                <div class="quick-view-btn">
+                                                    <a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Quick View">
+                                                    <span>Quick View</span>
+                                                    </a>
                                                 </div>
+                                                <div class="link-wishlist">
+                                                    <a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Wishlist">
+                                                        <span>Add to Wishlist</span>
+                                                    </a>
+                                                </div>
+                                                <div class="link-compare">
+                                                    <a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Compare">
+                                                        <span>Add to Compare</span>
+                                                    </a>
+                                                </div>
+                                                {% if product.in_stock > 0 %}
+                                                    <div class="add_cart">
+                                                        <button class="button btn-cart" type="button" data-toggle="tooltip" data-placement="right" title="" data-original-title="Add to Cart">
+                                                            <span>Add to Cart</span>
+                                                        </button>
+                                                    </div>
+                                                {% endif %}
                                             </div>
 
                                             <div class="rating">
@@ -78,15 +90,15 @@
                                                         {% if product.product_id.in_sale %}
                                                             <div class="price-box">
                                                             <span class="regular-price">
-                                                                <span class="price">${{ product.product_id.new_price }}
+                                                                <span class="price">${{ product.product_id.new_price|floatformat:2 }}
                                                                 <p class="old-price">
                                                                     <span class="price-label"></span>
-                                                                    <span class="price">${{ product.product_id.price }}</span>
+                                                                    <span class="price">${{ product.product_id.price|floatformat:2 }}</span>
                                                                 </p>
                                                                 </span>
                                                             </span>
                                                         {% else %}
-                                                            <div class="price-box"><span class="regular-price"><span class="price">${{ product.product_id.price }}</span> </span>
+                                                            <div class="price-box"><span class="regular-price"><span class="price">${{ product.product_id.price|floatformat:2 }}</span> </span>
                                                         {% endif %}
 
                                                     </div>
